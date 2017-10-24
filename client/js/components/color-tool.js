@@ -6,6 +6,7 @@ export class ColorTool extends React.Component {
     super(props);
 
     this.state = {
+      colors: props.colors.concat(),
       newColor: '',
     };
 
@@ -18,16 +19,21 @@ export class ColorTool extends React.Component {
     });
   }
 
-  render() {
+  addColor = () => {
+    this.setState({
+      colors: this.state.colors.concat(this.state.newColor),
+      newColor: '',
+    });
+  }
 
-    console.dir('re-rendering');
+  render() {
 
     return <div>
       <header>
         <h1>Color Tool</h1>
       </header>
       <ul>
-        {this.props.colors.map(color => <li>{color}</li>)}
+        {this.state.colors.map(color => <li>{color}</li>)}
       </ul>
       <form>
         <div>
@@ -35,6 +41,7 @@ export class ColorTool extends React.Component {
           <input type="text" id="new-color-input" name="newColor"
             value={this.state.newColor} onChange={this.onChange} />
         </div>
+        <button type="button" onClick={this.addColor}>Add Color</button>
       </form>
     </div>;
   }
