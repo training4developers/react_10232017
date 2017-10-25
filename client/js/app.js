@@ -1,15 +1,14 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { ColorTool } from './components/color-tool';
+import { CarTool } from './components/car-tool';
 
-const myColors = [ 'red', 'yellow', 'blue', 'green' ];
+const carData = [
+  { id: 1, make: 'Ford', model: 'Fusion Hybrid', year: 2017, color: 'blue', price: 23000 },
+  { id: 2, make: 'Ford', model: 'Focus', year: 2015, color: 'yellow', price: 12000 },
+];
 
 ReactDOM.render(
-  <div>
-    <ColorTool colors={myColors} />
-  </div>,
-  document.querySelector('main'),
+  <CarTool cars={carData} />,
+  document.querySelector('main')
 );
-
-console.log(myColors);
