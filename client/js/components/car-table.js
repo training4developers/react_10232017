@@ -3,6 +3,10 @@ import * as React from 'react';
 import { CarViewRow } from './car-view-row';
 
 export class CarTable extends React.Component {
+
+  static propTypes = { 
+
+  };
   
   render() {
   

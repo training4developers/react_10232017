@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as PropTypes from 'prop-types';
 
 export const CarViewRow = props => <tr>
   <td>{props.car.make}</td>
@@ -10,6 +11,18 @@ export const CarViewRow = props => <tr>
     <button type="button" onClick={ () => props.onDelete(props.car.id) }>Delete</button>
   </td>
 </tr>;
+
+CarViewRow.propTypes = {
+  car: PropTypes.shape({
+    id: PropTypes.number,
+    make: PropTypes.string,
+    model: PropTypes.string,
+    year: PropTypes.number,
+    color: PropTypes.string,
+    price: PropTypes.number,
+  }),
+  onDelete: PropTypes.func.isRequired,
+};
 
 // export const CarViewRow = props => {
   
