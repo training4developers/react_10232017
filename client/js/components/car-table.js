@@ -14,10 +14,11 @@ export class CarTable extends React.Component {
           <th>Year</th>
           <th>Color</th>
           <th>Price</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody>
-        {this.props.cars.map(car => <CarViewRow key={car.id} car={car} />)}
+        {this.props.cars.map(car => <CarViewRow key={car.id} car={car} onDelete={this.props.onDeleteCar} />)}
       </tbody>
     </table>;
   }

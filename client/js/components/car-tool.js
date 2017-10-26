@@ -18,6 +18,12 @@ export class CarTool extends React.Component {
     };
   }
 
+  deleteCar = carId => {
+    this.setState({
+      cars: this.state.cars.filter(c => c.id !== carId),
+    });
+  }
+
   saveCar = () => {
     this.setState({
       cars: this.state.cars.concat({
@@ -42,14 +48,18 @@ export class CarTool extends React.Component {
       : e.currentTarget.value, 
   });
 
+  componentDidMount() {
+    this.makeInput.focus();
+  }
+
   render() {
     return <div>
       <ToolHeader headerText="Car Tool" />
-      <CarTable cars={this.state.cars}  />
+      <CarTable cars={this.state.cars} onDeleteCar={this.deleteCar}  />
       <form>
         <div>
           <label htmlFor="make-input">Make:</label>
-          <input type="text" id="make-input" name="make"
+          <input type="text" id="make-input" name="make" ref={ input => this.makeInput = input }
             value={this.state.make} onChange={this.onChange} />
         </div>
         <div>
