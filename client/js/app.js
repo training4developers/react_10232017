@@ -6,14 +6,34 @@ import { refreshColors } from './database';
 
 // const myColors = [ 'red', 'yellow', 'blue', 'green' ];
 
-refreshColors().then(colors => {
+class ColorToolContainer extends React.Component {
 
-  ReactDOM.render(
-    <ColorTool colors={colors.map(c => c.name)} />,
-    document.querySelector('main'),
-  );
-  
-});
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      colors: [],
+    };
+  }
+
+  componentDidMount() {
+    refreshColors().then(colors => {
+      this.setState({
+        colors,
+      });
+    });
+  }
+
+  render() {
+    return <ColorTool colors={this.state.colors} />;
+  }
+
+}
+
+ReactDOM.render(
+  <ColorToolContainer />,
+  document.querySelector('main'),
+);
 
 
 
