@@ -1,8 +1,10 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
+import '../scss/styles.scss';
+
 import { ColorTool } from './components/color-tool';
-import { refreshColors } from './database';
+import { refreshColors, insertColor, deleteColor } from './database';
 
 // const myColors = [ 'red', 'yellow', 'blue', 'green' ];
 
@@ -13,19 +15,64 @@ class ColorToolContainer extends React.Component {
 
     this.state = {
       colors: [],
+      showLoading: false,
     };
   }
 
   componentDidMount() {
+    
+    this.setState({
+      showLoading: true,
+    });
+    
     refreshColors().then(colors => {
-      this.setState({
-        colors,
-      });
+      setTimeout(() => {
+        this.setState({
+          colors,
+          showLoading: false,
+        });
+      }, 4000);
     });
   }
 
+  insertColor = color => {
+
+    this.setState({
+      showLoading: true,
+    });
+
+    insertColor(color)
+      .then(() => refreshColors())
+      .then(colors => {
+        this.setState({
+          colors,
+          showLoading: false,
+        });
+      });
+  };
+
+  deleteColor = colorId => {
+
+    // dispatching the request action
+    this.setState({
+      showLoading: true,
+    });
+    
+    deleteColor(colorId)
+      .then(() => refreshColors())
+      .then(colors => {
+        // dispatching the done action
+        this.setState({
+          colors,
+          showLoading: false,
+        });
+      });
+
+  };
+
   render() {
-    return <ColorTool colors={this.state.colors} />;
+    return <ColorTool {...this.state}
+      insertColor={this.insertColor} deleteColor={this.deleteColor} />;
   }
 
 }

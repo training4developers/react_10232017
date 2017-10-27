@@ -6,14 +6,17 @@ import { ColorForm } from './color-form';
 
 export class ColorTool extends React.Component {
 
-  addColor = newColor => { };
-
   render() {
 
     return <div>
       <ToolHeader headerText="Color Tool" />
-      <ColorList {...this.props} />
-      <ColorForm buttonText="Add Color" onSubmitColor={this.addColor} />
+      <ColorList {...this.props} onDeleteColor={this.props.deleteColor} />
+      <ColorForm buttonText="Add Color" onSubmitColor={this.props.insertColor} />
+      {this.props.showLoading ? <section>
+        <div className="screen-block"></div>
+        <div className="loading-message"> Loading... </div>
+      </section> : null}
     </div>;
   }
 }
+

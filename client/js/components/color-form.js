@@ -22,7 +22,7 @@ export class ColorForm extends React.Component {
   }
 
   submitColor = () => {
-    this.props.onSubmitColor(this.state.color);
+    this.props.onSubmitColor({ name: this.state.color });
 
     this.setState({
       color: '',
