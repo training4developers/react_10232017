@@ -9,7 +9,14 @@
       "request": "launch",
       "name": "Launch Chrome",
       "url": "http://localhost:3000",
-      "webRoot": "${workspaceRoot}"
-    },
+      "webRoot": "${workspaceRoot}/client/js",
+      "trace": true,
+      "sourceMapPathOverrides": {
+        "webpack:///*": "*",
+        "webpack:///./*": "${webRoot}/*",
+        "webpack:///src/*": "${webRoot}/*",
+        "webpack:///./~/*": "${webRoot}/node_modules/*"
+      }
+    }
   ]
 }

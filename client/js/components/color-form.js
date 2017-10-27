@@ -30,7 +30,9 @@ export class ColorForm extends React.Component {
   }
 
   componentDidMount() {
-    this.colorInput.focus();
+    if (this.colorInput) {
+      this.colorInput.focus();
+    }
   }
 
   render() {

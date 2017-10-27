@@ -134,7 +134,7 @@ const webpackConfig = {
   output: {
     path: path.join(__dirname, destFolder),
     publicPath: '/',
-    filename: '[name].js'
+    filename: '[name].js',
   },
 
   // use the webpack dev server to serve up the web application
@@ -143,7 +143,8 @@ const webpackConfig = {
   // use full source maps this specific setting value is required to set
   // breakpoints in the TypeScript in the web browser for development other source
   // map settings do not allow debugging in browser and vscode
-  devtool: 'source-map'
+  //devtool: 'source-map'
+  devtool: 'source-map',
 };
 
 // only minify code when in production

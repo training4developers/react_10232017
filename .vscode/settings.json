@@ -6,11 +6,11 @@
     "**/.hg": true,
     "**/CVS": true,
     "**/.DS_Store": true,
-    "**/node_modules": true,
-    "**/.vscode": true,
-    "**/server-dist": true,
-    "**/client-dist": true,
-    "**/dist": true
+    "**/node_modules": false,
+    "**/.vscode": false,
+    "**/server-dist": false,
+    "**/client-dist": false,
+    "**/dist": false
   },
   "editor.formatOnSave": false,
   "editor.tabSize": 2,
